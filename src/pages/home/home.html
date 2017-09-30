@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Mercado Search cposada23
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Ingresa tu busqueda</ion-label>
+        <ion-input type="text" [(ngModel)]="product"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button block color="dark" (click)="lookup()">Buscar</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <div *ngIf="products">
+    <ion-card  *ngFor="let prod of products">
+      <img [src]="prod.thumbnail" alt="">
+      <ion-card-content>
+        <ion-card-title>
+          {{prod.title}}
+        </ion-card-title>
+        <p>
+          {{prod.price | currency:'COP':true}}
+        </p>
+        <a ion-button block [href]="prod.permalink">Ver</a>
+      </ion-card-content>
+    </ion-card>
+  </div >
+
+</ion-content>
